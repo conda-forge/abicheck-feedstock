@@ -29,6 +29,7 @@ requirements:
     - packaging >=21.0
     - pefile >=2023.2.7
     - macholib >=1.16
+    - castxml >=0.6.3  # required for header/type analysis mode
 
 test:
   imports:
