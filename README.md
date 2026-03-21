@@ -14,69 +14,27 @@ Development: https://github.com/napetrov/abicheck
 Documentation: https://github.com/napetrov/abicheck/tree/main/docs
 
 abicheck is a Python-native ABI compatibility checker for C/C++ shared
-libraries (.so files). It detects breaking changes between library versions
-using a multi-tier approach: castxml header AST analysis, ELF symbol table
-inspection, and DWARF debug info extraction.
+libraries. It detects breaking changes between library versions
+using a multi-tier approach: source/header analysis, symbol table
+inspection, and debug info extraction.
 
 Key features:
 - 85 ChangeKinds across BREAKING / API_BREAK / COMPATIBLE severity tiers
-- 100% parity with abi-compliance-checker (ABICC) for 55 documented scenarios
-- ABICC drop-in CLI: accepts all major abi-compliance-checker flags
+- ABICC-compatible CLI for major abi-compliance-checker workflows
 - Policy system: built-in profiles + YAML-based per-project overrides
-- COMPATIBLE_WITH_RISK verdict for deployment-risk changes (e.g. new GLIBC requirements)
+- COMPATIBLE_WITH_RISK verdict for deployment-risk changes
 - Reports: Markdown, JSON, SARIF, HTML
-- Linux only (ELF/DWARF); Windows PE and macOS Mach-O not yet supported
+- Cross-platform metadata support: ELF, PE/COFF, and Mach-O
 
 
 Current build status
 ====================
 
 
-<table>
-    
-  <tr>
-    <td>Azure</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27739&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/abicheck-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27739&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/abicheck-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27739&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/abicheck-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27739&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/abicheck-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27739&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/abicheck-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
+      <img src="https://img.shields.io/badge/noarch-disabled-lightgrey.svg" alt="noarch disabled">
     </td>
   </tr>
 </table>
