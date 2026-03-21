@@ -1,5 +1,6 @@
 {% set name = "abicheck" %}
 {% set version = "0.2.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -12,16 +13,15 @@ source:
 build:
   number: 0
   noarch: python
-  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools >=68
   run:
-    - python
+    - python >={{ python_min }}
     - click >=8.0
     - pyyaml >=6.0
     - defusedxml >=0.7.1
@@ -38,6 +38,7 @@ test:
     - abicheck --version
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/napetrov/abicheck
