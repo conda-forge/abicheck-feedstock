@@ -37,6 +37,11 @@ test:
   commands:
     - abicheck --help
     - abicheck --version
+    - abicheck compare --help
+    - abicheck compare-release --help
+    - abicheck compat --help
+    - abicheck appcompat --help
+    - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
   requires:
     - pip
     - python {{ python_min }}
