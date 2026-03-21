@@ -1,5 +1,5 @@
 {% set name = "abicheck" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,12 @@ package:
 
 source:
   url: https://github.com/napetrov/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 2429f0afba461d2a99c45e7c4089d2f86b06ef08493b1ca1a13566069a7894a7
+  sha256: 26c3a1f8d2ead35007745f49714dc793e6cad18fb96468b2a5130c1a957dff8e
 
 build:
   number: 0
-  skip: true  # [not linux or py<310]
+  noarch: python
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -25,7 +26,9 @@ requirements:
     - pyyaml >=6.0
     - defusedxml >=0.7.1
     - pyelftools >=0.29
-    - castxml >=0.6.3  # required at runtime for header-based analysis
+    - packaging >=21.0
+    - pefile >=2023.2.7
+    - macholib >=1.16
 
 test:
   imports:
@@ -41,18 +44,17 @@ about:
   summary: Modern Python-native ABI compatibility checker for C/C++ shared libraries
   description: |
     abicheck is a Python-native ABI compatibility checker for C/C++ shared
-    libraries (.so files). It detects breaking changes between library versions
-    using a multi-tier approach: castxml header AST analysis, ELF symbol table
-    inspection, and DWARF debug info extraction.
+    libraries. It detects breaking changes between library versions
+    using a multi-tier approach: source/header analysis, symbol table
+    inspection, and debug info extraction.
 
     Key features:
     - 85 ChangeKinds across BREAKING / API_BREAK / COMPATIBLE severity tiers
-    - 100% parity with abi-compliance-checker (ABICC) for 55 documented scenarios
-    - ABICC drop-in CLI: accepts all major abi-compliance-checker flags
+    - ABICC-compatible CLI for major abi-compliance-checker workflows
     - Policy system: built-in profiles + YAML-based per-project overrides
-    - COMPATIBLE_WITH_RISK verdict for deployment-risk changes (e.g. new GLIBC requirements)
+    - COMPATIBLE_WITH_RISK verdict for deployment-risk changes
     - Reports: Markdown, JSON, SARIF, HTML
-    - Linux only (ELF/DWARF); Windows PE and macOS Mach-O not yet supported
+    - Cross-platform metadata support: ELF, PE/COFF, and Mach-O
   license: Apache-2.0
   license_file: LICENSE
   doc_url: https://github.com/napetrov/abicheck/tree/main/docs
