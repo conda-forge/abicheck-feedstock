@@ -1,5 +1,5 @@
 {% set name = "abicheck" %}
-{% set version = "0.2.0" %}
+{% set version = "0.3.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/napetrov/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 26c3a1f8d2ead35007745f49714dc793e6cad18fb96468b2a5130c1a957dff8e
+  sha256: a57897b660f360527aea1df8f479681e7c757cc6e8967b47b4faf06e96dccdcc
 
 build:
   number: 0
