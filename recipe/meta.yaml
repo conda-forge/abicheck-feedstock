@@ -38,7 +38,7 @@ test:
     - abicheck --help
     - abicheck --version
     - abicheck compare --help
-    - abicheck compare-release --help
+    - abicheck graph --help
     - abicheck compat --help
     - abicheck appcompat --help
     - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
