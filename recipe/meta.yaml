@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/napetrov/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/abicheck/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 150826d2b10622cb6141af9473febcd0741ef943018db7ac6fea1d197b1b3544
 
 build:
@@ -47,25 +47,22 @@ test:
     - python {{ python_min }}
 
 about:
-  home: https://github.com/napetrov/abicheck
+  home: https://github.com/abicheck/abicheck
   summary: Modern Python-native ABI compatibility checker for C/C++ shared libraries
   description: |
-    abicheck is a Python-native ABI compatibility checker for C/C++ shared
-    libraries. It detects breaking changes between library versions
-    using a multi-tier approach: source/header analysis, symbol table
-    inspection, and debug info extraction.
+    abicheck combines binary, debug-info, public-header, build-system, and
+    optional source evidence to detect C/C++ ABI/API compatibility breaks.
+    It reports removed symbols, signature and type-layout changes, vtable and
+    enum drift, linker metadata changes, and other compatibility risks while
+    identifying which checks were possible with the supplied evidence.
 
-    Key features:
-    - 85 ChangeKinds across BREAKING / API_BREAK / COMPATIBLE severity tiers
-    - ABICC-compatible CLI for major abi-compliance-checker workflows
-    - Policy system: built-in profiles + YAML-based per-project overrides
-    - COMPATIBLE_WITH_RISK verdict for deployment-risk changes
-    - Reports: Markdown, JSON, SARIF, HTML
-    - Cross-platform metadata support: ELF, PE/COFF, and Mach-O
+    It supports ELF, PE/COFF, and Mach-O binaries; Markdown, JSON, SARIF, HTML,
+    and JUnit reports; snapshot baselines; policy profiles and suppressions;
+    Python and command-line APIs; and CI integration through a GitHub Action.
   license: Apache-2.0
   license_file: LICENSE
-  doc_url: https://github.com/napetrov/abicheck/tree/main/docs
-  dev_url: https://github.com/napetrov/abicheck
+  doc_url: https://abicheck.github.io/abicheck/
+  dev_url: https://github.com/abicheck/abicheck
 
 extra:
   recipe-maintainers:
