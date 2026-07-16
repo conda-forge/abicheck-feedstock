@@ -1,5 +1,5 @@
 {% set name = "abicheck" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/abicheck/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 150826d2b10622cb6141af9473febcd0741ef943018db7ac6fea1d197b1b3544
+  sha256: 5daf5f0779d923359062493bedba7b7ec48448e38abf5243096df4cf1d887ade
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -19,10 +19,11 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - setuptools >=68
+    - setuptools >=68,<75
   run:
     - python >={{ python_min }}
     - click >=8.0
+    - rich-click >=1.7
     - pyyaml >=6.0
     - defusedxml >=0.7.1
     - pyelftools >=0.29
@@ -37,10 +38,11 @@ test:
   commands:
     - abicheck --help
     - abicheck --version
+    - abicheck dump --help
     - abicheck compare --help
-    - abicheck graph --help
+    - abicheck scan --help
+    - abicheck deps --help
     - abicheck compat --help
-    - abicheck appcompat --help
     - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
   requires:
     - pip
