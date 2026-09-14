@@ -1,6 +1,5 @@
 {% set name = "abicheck" %}
 {% set version = "0.5.0" %}
-{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +10,7 @@ source:
   sha256: 5daf5f0779d923359062493bedba7b7ec48448e38abf5243096df4cf1d887ade
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -50,17 +49,17 @@ test:
 
 about:
   home: https://github.com/abicheck/abicheck
-  summary: Modern Python-native ABI compatibility checker for C/C++ shared libraries
+  summary: ABI/API compatibility checker for C/C++ libraries
   description: |
-    abicheck combines binary, debug-info, public-header, build-system, and
-    optional source evidence to detect C/C++ ABI/API compatibility breaks.
-    It reports removed symbols, signature and type-layout changes, vtable and
-    enum drift, linker metadata changes, and other compatibility risks while
-    identifying which checks were possible with the supplied evidence.
+    abicheck compares releases of C/C++ libraries to reveal ABI and API changes,
+    explain which changes can break existing consumers, and gate compatibility in
+    CI. It combines binary metadata, debug information, public headers, build
+    context, and optional source evidence, and reports what it could and could
+    not verify.
 
     It supports ELF, PE/COFF, and Mach-O binaries; Markdown, JSON, SARIF, HTML,
-    and JUnit reports; snapshot baselines; policy profiles and suppressions;
-    Python and command-line APIs; and CI integration through a GitHub Action.
+    and JUnit reports; snapshot baselines; policy profiles and suppressions; and
+    Python, command-line, and GitHub Action integrations.
   license: Apache-2.0
   license_file: LICENSE
   doc_url: https://abicheck.github.io/abicheck/
