@@ -16,11 +16,11 @@ build:
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools >=68,<75
   run:
-    - python
+    - python >={{ python_min }}
     - click >=8.0
     - rich-click >=1.7
     - pyyaml >=6.0
@@ -45,7 +45,7 @@ test:
     - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
   requires:
     - pip
-    - python
+    - python {{ python_min }}
 
 about:
   home: https://github.com/abicheck/abicheck
