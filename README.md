@@ -3,28 +3,25 @@ About abicheck-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/abicheck-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/napetrov/abicheck
+Home: https://github.com/abicheck/abicheck
 
 Package license: Apache-2.0
 
-Summary: Modern Python-native ABI compatibility checker for C/C++ shared libraries
+Summary: ABI/API compatibility checker for C/C++ libraries
 
-Development: https://github.com/napetrov/abicheck
+Development: https://github.com/abicheck/abicheck
 
-Documentation: https://github.com/napetrov/abicheck/tree/main/docs
+Documentation: https://abicheck.github.io/abicheck/
 
-abicheck is a Python-native ABI compatibility checker for C/C++ shared
-libraries. It detects breaking changes between library versions
-using a multi-tier approach: source/header analysis, symbol table
-inspection, and debug info extraction.
+abicheck compares releases of C/C++ libraries to reveal ABI and API changes,
+explain which changes can break existing consumers, and gate compatibility in
+CI. It combines binary metadata, debug information, public headers, build
+context, and optional source evidence, and reports what it could and could
+not verify.
 
-Key features:
-- 85 ChangeKinds across BREAKING / API_BREAK / COMPATIBLE severity tiers
-- ABICC-compatible CLI for major abi-compliance-checker workflows
-- Policy system: built-in profiles + YAML-based per-project overrides
-- COMPATIBLE_WITH_RISK verdict for deployment-risk changes
-- Reports: Markdown, JSON, SARIF, HTML
-- Cross-platform metadata support: ELF, PE/COFF, and Mach-O
+It supports ELF, PE/COFF, and Mach-O binaries; Markdown, JSON, SARIF, HTML,
+and JUnit reports; snapshot baselines; policy profiles and suppressions; and
+Python, command-line, and GitHub Action integrations.
 
 
 Current build status
@@ -58,31 +55,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `abicheck` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install abicheck
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install abicheck
 ```
 
-It is possible to list all of the versions of `abicheck` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add abicheck
+# for installing globally
+pixi global install abicheck
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `abicheck` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search abicheck --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search abicheck --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search abicheck --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -94,6 +133,8 @@ mamba repoquery whoneeds abicheck --channel conda-forge
 # List dependencies of `abicheck`:
 mamba repoquery depends abicheck --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
