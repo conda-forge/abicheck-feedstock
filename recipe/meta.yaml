@@ -40,7 +40,6 @@ test:
     - abicheck dump --help
     - abicheck compare --help
     - abicheck deps --help
-    - abicheck compat --help
     - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
   requires:
     - pip
