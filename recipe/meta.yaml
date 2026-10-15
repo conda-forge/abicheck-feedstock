@@ -1,5 +1,5 @@
 {% set name = "abicheck" %}
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/abicheck/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c917553a98f0087bcedaa8f38ec3457037ac17ab2e71a081b73cb834cd6e9245
+  sha256: e6069f3eb711109a92a6b84d2ef8d37a4efc706c8b4f282e0bc34017f7a3ae72
 
 build:
   number: 0
@@ -40,7 +40,6 @@ test:
     - abicheck dump --help
     - abicheck compare --help
     - abicheck deps --help
-    - abicheck compat --help
     - python -c "import abicheck.cli, abicheck.service, abicheck.reporter"
   requires:
     - pip
