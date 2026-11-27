@@ -1,5 +1,5 @@
 {% set name = "abicheck" %}
-{% set version = "0.8.0" %}
+{% set version = "0.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/abicheck/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 1187aaa5150f6cbdfa9cc02b7aa8763fd53c1b5880a5858e86a246883b62cf20
+  sha256: 1221f5a1df5325b8f65dcd414cc793410c4cc2311e65b22c10248c7188e6b83a
 
 build:
   number: 0
